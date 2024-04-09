@@ -15,7 +15,7 @@ const onSvelteWarning = (warning, defaultHandler) => {
 
 const config: SvelteConfig = {
   //抛出css 供其他webpack 插件使用,如果没有其他处理css代码的loader 的话，会报错，所以webpack.config.ts 里面必须要有处理css 的loader
-  emitCss: true,
+  // emitCss: true,
   preprocess: linearPreprocess([
     typescript(),
     scss(),
@@ -26,7 +26,6 @@ const config: SvelteConfig = {
     }),
   ]),
   compilerOptions: {
-    css: false,
     cssHash: ({ css, hash }) => {
       return `ass-${hash(css)}`;
     },
