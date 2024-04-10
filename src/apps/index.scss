@@ -1,12 +1,25 @@
 h1 {
   color: red;
+  display: flex;
+  transition: transform 1s;
+  gap: 20px;
+  user-select: none;
   a {
     color: yellow;
   }
+}
+::placeholder {
+  color: gray;
 }
 .bold {
   font-weight: bolder;
   .a-tag {
     color: green;
+  }
+}
+
+@media (min-resolution: 1dppx) {
+  .bold {
+    color: blue;
   }
 }

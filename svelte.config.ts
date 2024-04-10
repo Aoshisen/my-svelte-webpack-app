@@ -1,5 +1,6 @@
-import { typescript, scss } from "svelte-preprocess";
+import { typescript, scss, postcss } from "svelte-preprocess";
 import { cssModules, linearPreprocess } from "svelte-preprocess-cssmodules";
+import autoprefixer from "autoprefixer";
 import type { PreprocessorGroup } from "svelte/types/compiler/preprocess";
 interface SvelteConfig {
   preprocess?: PreprocessorGroup | PreprocessorGroup[];
@@ -11,6 +12,9 @@ const config: SvelteConfig = {
   preprocess: linearPreprocess([
     typescript(),
     scss(),
+    postcss({
+      plugins: [autoprefixer()],
+    }),
     cssModules({
       mode: "scoped",
       useAsDefaultScoping: true,

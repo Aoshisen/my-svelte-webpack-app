@@ -8,6 +8,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.19",
     "scss": "^0.2.4",
     "svelte": "^4.2.12",
     "typescript": "^5.4.4"
