@@ -3,6 +3,8 @@ import { Configuration } from "webpack";
 import { Configuration as DevServerConfiguration } from "webpack-dev-server";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin"
+
 import svelteConfig from "./svelte.config";
 const mode = process.env.NODE_ENV || "development";
 export const prod = mode === "production";
@@ -48,7 +50,6 @@ const config: Configuration = {
               workerParallelJobs: 50,
             },
           },
-          // "thread-loader",
           {
             loader: "ts-loader",
             options: {
@@ -70,7 +71,14 @@ const config: Configuration = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };
 
 const devServerConfig: DevServerConfiguration = {
